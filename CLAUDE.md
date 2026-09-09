@@ -1,4 +1,4 @@
-Actúa como un Desarrollador Full-Stack Senior y arquitecto de software. Vas a construir la plataforma completa "EProfile", un sistema de tarjetas de presentación digitales dinámicas basado en el documento de requerimientos adjunto.
+Actúa como un Desarrollador Full-Stack Senior y arquitecto de software. Vas a construir la plataforma completa "Prolify", un sistema de tarjetas de presentación digitales dinámicas basado en el documento de requerimientos adjunto.
 
 ### Stack Tecnológico a Utilizar
 - Framework: Next.js 14+ (App Router, TypeScript)
@@ -10,7 +10,7 @@ Actúa como un Desarrollador Full-Stack Senior y arquitecto de software. Vas a c
 
 ### 1. Estructura de Rutas
 Implementa las siguientes rutas dentro del App Router:
-1. `/[slug]`: EProfile pública visible para cualquier visitante sin autenticación.
+1. `/[slug]`: Prolify pública visible para cualquier visitante sin autenticación.
 2. `/[slug]/admin`: Panel privado de administración del estudiante propietario (requiere auth y validación de propiedad del slug).
 3. `/admin`: Panel del Administrador de la Plataforma (gestión global de usuarios y perfiles).
 4. `/login`: Pantalla de inicio de sesión unificada.

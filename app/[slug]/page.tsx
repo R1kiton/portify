@@ -12,9 +12,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const profile = await getVisiblePublishedProfile(slug);
-  if (!profile) return { title: "EProfile" };
+  if (!profile) return { title: "Prolify" };
   return {
-    title: `${profile.fullName} — EProfile`,
+    title: `${profile.fullName} — Prolify`,
     description: profile.headline || profile.career || undefined,
   };
 }

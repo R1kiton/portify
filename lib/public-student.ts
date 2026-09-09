@@ -2,7 +2,7 @@ import "server-only";
 import { prisma } from "@/lib/prisma";
 import { getPublishedProfile, type PublishedProfile } from "@/lib/publish";
 
-// A deactivated account's EProfile must stop being visible to visitors,
+// A deactivated account's Prolify must stop being visible to visitors,
 // even though its published snapshot is still in the database.
 export async function getVisibleStudent(slug: string) {
   const student = await prisma.student.findUnique({ where: { slug }, include: { user: true } });

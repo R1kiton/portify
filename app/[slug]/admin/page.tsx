@@ -47,7 +47,7 @@ export default async function StudentDashboardPage({
       <div className={card}>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-medium text-slate-500">Estado de tu EProfile</p>
+            <p className="text-sm font-medium text-slate-500">Estado de tu Prolify</p>
             <span className={`${badge} ${meta.tone} mt-2`}>
               <meta.icon className="h-3.5 w-3.5" />
               {meta.label}
@@ -96,7 +96,7 @@ export default async function StudentDashboardPage({
       </div>
 
       <div className={card}>
-        <h2 className="mb-1 text-sm font-semibold text-slate-900">Compartir tu EProfile</h2>
+        <h2 className="mb-1 text-sm font-semibold text-slate-900">Compartir tu Prolify</h2>
         <p className="mb-4 text-sm text-slate-500">
           Este enlace y el código QR no cambian, aunque actualices tu contenido.
         </p>

@@ -34,7 +34,7 @@ export default async function StudentAdminLayout({
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-4 sm:px-6">
           <div className="min-w-0">
             <p className="text-xs font-medium uppercase tracking-wide text-slate-400">Panel de estudiante</p>
-            <p className="truncate font-bold text-slate-900">eprofile.com/{student.slug}</p>
+            <p className="truncate font-bold text-slate-900">Prolify.com/{student.slug}</p>
           </div>
           <div className="flex items-center gap-4">
             <Link

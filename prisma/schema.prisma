@@ -1,4 +1,4 @@
-// Prisma schema for the EProfile platform.
+// Prisma schema for the Prolify platform.
 // Learn more: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -29,7 +29,7 @@ model User {
   @@map("users")
 }
 
-// The public, editable EProfile that lives at eprofile.com/<slug>.
+// The public, editable Prolify that lives at Prolify.com/<slug>.
 model Student {
   id       String @id @default(cuid())
   slug     String @unique

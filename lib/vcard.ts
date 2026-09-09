@@ -14,7 +14,7 @@ export function buildVCard(profile: PublishedProfile, profileUrl: string): strin
   if (profile.linkedinUrl) lines.push(`URL;TYPE=LinkedIn:${escapeVCardValue(profile.linkedinUrl)}`);
   if (profile.githubUrl) lines.push(`URL;TYPE=GitHub:${escapeVCardValue(profile.githubUrl)}`);
   if (profile.websiteUrl) lines.push(`URL;TYPE=Website:${escapeVCardValue(profile.websiteUrl)}`);
-  lines.push(`URL;TYPE=EProfile:${escapeVCardValue(profileUrl)}`);
+  lines.push(`URL;TYPE=Prolify:${escapeVCardValue(profileUrl)}`);
   if (profile.headline) lines.push(`NOTE:${escapeVCardValue(profile.headline)}`);
 
   lines.push("END:VCARD");

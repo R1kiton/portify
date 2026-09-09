@@ -25,7 +25,7 @@ function revalidateStudent(slug: string) {
 
 // ---------- Profile ----------
 
-export async function updateProfile(slug: string, formData: FormData) {
+export async function updatProlify(slug: string, formData: FormData) {
   const { student } = await requireStudentAccess(slug);
 
   let photoUrl = student.photoUrl;

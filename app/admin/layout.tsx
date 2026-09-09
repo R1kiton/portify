@@ -20,7 +20,7 @@ export default async function PlatformAdminLayout({
             </span>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-slate-400">Panel de plataforma</p>
-              <p className="font-bold leading-none text-slate-900">EProfile Admin</p>
+              <p className="font-bold leading-none text-slate-900">Prolify Admin</p>
             </div>
           </Link>
           <form action={logout}>
