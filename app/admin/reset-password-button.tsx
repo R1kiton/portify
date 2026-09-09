@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { KeyRound } from "lucide-react";
 import { resetPasswordAction } from "./actions";
 import { btnGhost } from "@/lib/ui";
 
@@ -26,6 +27,7 @@ export function ResetPasswordButton({ userId }: { userId: string }) {
         }}
         className={btnGhost}
       >
+        <KeyRound className="h-3.5 w-3.5" />
         {pending ? "Generando..." : "Reiniciar contraseña"}
       </button>
     </form>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { Ban, RotateCcw } from "lucide-react";
 import { toggleActiveAction } from "./actions";
 import { btnGhost } from "@/lib/ui";
 
@@ -23,6 +24,7 @@ export function ToggleActiveButton({ userId, active }: { userId: string; active:
         }}
         className={btnGhost}
       >
+        {active ? <Ban className="h-3.5 w-3.5" /> : <RotateCcw className="h-3.5 w-3.5" />}
         {pending ? "..." : active ? "Desactivar" : "Reactivar"}
       </button>
     </form>

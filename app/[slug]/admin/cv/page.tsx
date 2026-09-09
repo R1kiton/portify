@@ -1,3 +1,4 @@
+import { Briefcase, GraduationCap, Award, Plus } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { requireStudentAccess } from "@/lib/auth/dal";
 import {
@@ -10,9 +11,31 @@ import {
   addAchievement,
   deleteAchievement,
 } from "../actions";
-import { card, input, label, textarea, btnGhost } from "@/lib/ui";
+import { card, input, label, textarea } from "@/lib/ui";
 import { SubmitButton } from "@/components/submit-button";
 import { DeleteButton } from "@/components/delete-button";
+
+function CardHeading({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="mb-6 flex items-center gap-2">
+      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+        <Icon className="h-4.5 w-4.5" />
+      </div>
+      <div>
+        <h1 className="text-lg font-semibold text-slate-900">{title}</h1>
+        <p className="text-sm text-slate-500">{description}</p>
+      </div>
+    </div>
+  );
+}
 
 export default async function CvEditPage({
   params,
@@ -32,15 +55,14 @@ export default async function CvEditPage({
     <div className="flex flex-col gap-8">
       {/* Experience */}
       <section className={card}>
-        <h1 className="mb-1 text-lg font-semibold text-zinc-900">Experiencia</h1>
-        <p className="mb-5 text-sm text-zinc-500">Trabajos, prácticas o colaboraciones.</p>
+        <CardHeading icon={Briefcase} title="Experiencia" description="Trabajos, prácticas o colaboraciones." />
 
         <div className="flex flex-col gap-4">
           {experiences.map((exp) => (
             <form
               key={exp.id}
               action={updateExperience.bind(null, slug, exp.id)}
-              className="rounded-xl border border-zinc-200 p-4"
+              className="rounded-xl border border-slate-200 bg-slate-50/60 p-4"
             >
               <div className="grid gap-3 sm:grid-cols-2">
                 <input name="company" defaultValue={exp.company} placeholder="Empresa *" required className={input} />
@@ -55,11 +77,13 @@ export default async function CvEditPage({
               </div>
             </form>
           ))}
-          {experiences.length === 0 ? <p className="text-sm text-zinc-400">Aún no agregas experiencia.</p> : null}
+          {experiences.length === 0 ? <p className="text-sm text-slate-400">Aún no agregas experiencia.</p> : null}
         </div>
 
-        <details className="mt-4 rounded-xl border border-dashed border-zinc-300 p-4">
-          <summary className="cursor-pointer text-sm font-medium text-zinc-700">+ Agregar experiencia</summary>
+        <details className="mt-4 rounded-xl border border-dashed border-slate-300 p-4 open:bg-slate-50/50">
+          <summary className="flex cursor-pointer items-center gap-1.5 text-sm font-medium text-slate-700">
+            <Plus className="h-4 w-4" /> Agregar experiencia
+          </summary>
           <form action={addExperience.bind(null, slug)} className="mt-4 flex flex-col gap-3">
             <div className="grid gap-3 sm:grid-cols-2">
               <input name="company" placeholder="Empresa *" required className={input} />
@@ -77,15 +101,14 @@ export default async function CvEditPage({
 
       {/* Education */}
       <section className={card}>
-        <h1 className="mb-1 text-lg font-semibold text-zinc-900">Formación</h1>
-        <p className="mb-5 text-sm text-zinc-500">Estudios y certificaciones.</p>
+        <CardHeading icon={GraduationCap} title="Formación" description="Estudios y certificaciones." />
 
         <div className="flex flex-col gap-4">
           {educations.map((edu) => (
             <form
               key={edu.id}
               action={updateEducation.bind(null, slug, edu.id)}
-              className="rounded-xl border border-zinc-200 p-4"
+              className="rounded-xl border border-slate-200 bg-slate-50/60 p-4"
             >
               <div className="grid gap-3 sm:grid-cols-2">
                 <input name="institution" defaultValue={edu.institution} placeholder="Institución *" required className={input} />
@@ -103,11 +126,13 @@ export default async function CvEditPage({
               </div>
             </form>
           ))}
-          {educations.length === 0 ? <p className="text-sm text-zinc-400">Aún no agregas formación.</p> : null}
+          {educations.length === 0 ? <p className="text-sm text-slate-400">Aún no agregas formación.</p> : null}
         </div>
 
-        <details className="mt-4 rounded-xl border border-dashed border-zinc-300 p-4">
-          <summary className="cursor-pointer text-sm font-medium text-zinc-700">+ Agregar formación</summary>
+        <details className="mt-4 rounded-xl border border-dashed border-slate-300 p-4 open:bg-slate-50/50">
+          <summary className="flex cursor-pointer items-center gap-1.5 text-sm font-medium text-slate-700">
+            <Plus className="h-4 w-4" /> Agregar formación
+          </summary>
           <form action={addEducation.bind(null, slug)} className="mt-4 flex flex-col gap-3">
             <div className="grid gap-3 sm:grid-cols-2">
               <input name="institution" placeholder="Institución *" required className={input} />
@@ -128,8 +153,7 @@ export default async function CvEditPage({
 
       {/* Achievements */}
       <section className={card}>
-        <h1 className="mb-1 text-lg font-semibold text-zinc-900">Reconocimientos</h1>
-        <p className="mb-5 text-sm text-zinc-500">Premios, becas o menciones.</p>
+        <CardHeading icon={Award} title="Reconocimientos" description="Premios, becas o menciones." />
 
         <form action={addAchievement.bind(null, slug)} className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="flex-1">
@@ -148,17 +172,15 @@ export default async function CvEditPage({
         </form>
 
         {achievements.length > 0 ? (
-          <ul className="mt-5 flex flex-col divide-y divide-zinc-100">
+          <ul className="mt-5 flex flex-col divide-y divide-slate-100">
             {achievements.map((a) => (
               <li key={a.id} className="flex items-center justify-between gap-4 py-3">
                 <div>
-                  <p className="text-sm font-medium text-zinc-900">{a.title}</p>
-                  {a.description ? <p className="text-sm text-zinc-500">{a.description}</p> : null}
+                  <p className="text-sm font-medium text-slate-900">{a.title}</p>
+                  {a.description ? <p className="text-sm text-slate-500">{a.description}</p> : null}
                 </div>
                 <form action={deleteAchievement.bind(null, slug, a.id)}>
-                  <button type="submit" className={btnGhost}>
-                    Eliminar
-                  </button>
+                  <DeleteButton />
                 </form>
               </li>
             ))}

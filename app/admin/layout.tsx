@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogOut } from "lucide-react";
 import { requirePlatformAdmin } from "@/lib/auth/dal";
 import { logout } from "@/lib/auth/actions";
 
@@ -10,17 +11,24 @@ export default async function PlatformAdminLayout({
   await requirePlatformAdmin();
 
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-50">
-      <header className="border-b border-zinc-200 bg-white">
+    <div className="flex min-h-screen flex-col bg-slate-50">
+      <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <div>
-            <p className="text-sm text-zinc-500">Panel de plataforma</p>
-            <Link href="/admin" className="font-semibold text-zinc-900">
-              EProfile Admin
-            </Link>
-          </div>
+          <Link href="/admin" className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm font-black text-white">
+              E
+            </span>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-slate-400">Panel de plataforma</p>
+              <p className="font-bold leading-none text-slate-900">EProfile Admin</p>
+            </div>
+          </Link>
           <form action={logout}>
-            <button type="submit" className="text-sm text-zinc-600 hover:text-zinc-900">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900"
+            >
+              <LogOut className="h-4 w-4" />
               Cerrar sesión
             </button>
           </form>

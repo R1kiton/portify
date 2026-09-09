@@ -1,16 +1,9 @@
 import Link from "next/link";
+import { ExternalLink, LogOut, ShieldAlert } from "lucide-react";
 import { requireStudentAccess } from "@/lib/auth/dal";
 import { logout } from "@/lib/auth/actions";
 import { UserRole } from "@/app/generated/prisma/enums";
-
-const NAV_ITEMS = [
-  { href: "", label: "Resumen" },
-  { href: "/profile", label: "Perfil" },
-  { href: "/cv", label: "Formación y experiencia" },
-  { href: "/projects", label: "Proyectos" },
-  { href: "/skills", label: "Habilidades" },
-  { href: "/preview", label: "Vista previa" },
-];
+import { AdminNav } from "./admin-nav";
 
 export default async function StudentAdminLayout({
   children,
@@ -23,9 +16,10 @@ export default async function StudentAdminLayout({
   const { student, isAdmin, session } = await requireStudentAccess(slug);
 
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-50">
+    <div className="flex min-h-screen flex-col bg-slate-50">
       {isAdmin && session.role === UserRole.PLATFORM_ADMIN ? (
-        <div className="bg-amber-100 px-6 py-2 text-center text-sm text-amber-900">
+        <div className="flex items-center justify-center gap-2 bg-amber-100 px-6 py-2 text-center text-sm text-amber-900">
+          <ShieldAlert className="h-4 w-4 shrink-0" />
           Estás administrando el panel de <strong>{student.fullName || student.slug}</strong> como
           administrador de plataforma.{" "}
           <Link href="/admin" className="underline">
@@ -34,18 +28,27 @@ export default async function StudentAdminLayout({
         </div>
       ) : null}
 
-      <header className="border-b border-zinc-200 bg-white">
+      <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <div>
-            <p className="text-sm text-zinc-500">Panel de estudiante</p>
-            <p className="font-semibold text-zinc-900">eprofile.com/{student.slug}</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">Panel de estudiante</p>
+            <p className="font-bold text-slate-900">eprofile.com/{student.slug}</p>
           </div>
-          <div className="flex items-center gap-3">
-            <Link href={`/${student.slug}`} target="_blank" className="text-sm text-zinc-600 hover:text-zinc-900">
-              Ver perfil público ↗
+          <div className="flex items-center gap-4">
+            <Link
+              href={`/${student.slug}`}
+              target="_blank"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-indigo-600"
+            >
+              Ver perfil público
+              <ExternalLink className="h-3.5 w-3.5" />
             </Link>
             <form action={logout}>
-              <button type="submit" className="text-sm text-zinc-600 hover:text-zinc-900">
+              <button
+                type="submit"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900"
+              >
+                <LogOut className="h-4 w-4" />
                 Cerrar sesión
               </button>
             </form>
@@ -54,21 +57,10 @@ export default async function StudentAdminLayout({
       </header>
 
       <div className="mx-auto flex w-full max-w-5xl flex-1 gap-8 px-6 py-8">
-        <nav className="w-48 shrink-0">
-          <ul className="flex flex-col gap-1">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={`/${student.slug}/admin${item.href}`}
-                  className="block rounded-lg px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-100"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <nav className="w-56 shrink-0">
+          <AdminNav slug={student.slug} />
         </nav>
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
     </div>
   );

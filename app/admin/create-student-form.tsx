@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import { createStudentAction } from "./actions";
 import { input, label } from "@/lib/ui";
 import { SubmitButton } from "@/components/submit-button";
@@ -25,18 +26,26 @@ export function CreateStudentForm() {
         </div>
       </div>
 
-      {state?.error ? <p className="text-sm text-red-600">{state.error}</p> : null}
+      {state?.error ? (
+        <p className="flex items-center gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          {state.error}
+        </p>
+      ) : null}
 
       {state?.success ? (
-        <div className="rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-          Cuenta creada para <strong>{state.success.email}</strong> en{" "}
-          <strong>/{state.success.slug}</strong>.
-          <br />
-          Contraseña temporal:{" "}
-          <code className="rounded bg-emerald-100 px-1.5 py-0.5 font-mono">
-            {state.success.tempPassword}
-          </code>{" "}
-          — compártela ahora, no se volverá a mostrar.
+        <div className="flex items-start gap-2 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+          <p>
+            Cuenta creada para <strong>{state.success.email}</strong> en{" "}
+            <strong>/{state.success.slug}</strong>.
+            <br />
+            Contraseña temporal:{" "}
+            <code className="rounded bg-emerald-100 px-1.5 py-0.5 font-mono">
+              {state.success.tempPassword}
+            </code>{" "}
+            — compártela ahora, no se volverá a mostrar.
+          </p>
         </div>
       ) : null}
 

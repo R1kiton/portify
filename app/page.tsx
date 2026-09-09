@@ -1,61 +1,118 @@
 import Link from "next/link";
-import { btnPrimary, btnSecondary } from "@/lib/ui";
+import {
+  ArrowRight,
+  QrCode,
+  FileDown,
+  UserCog,
+  Eye,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
+import { btnPrimary } from "@/lib/ui";
+
+const ROLES = [
+  {
+    icon: Eye,
+    title: "Visitante",
+    description:
+      "Ve cualquier EProfile pública sin iniciar sesión, descarga el CV en PDF y guarda el contacto.",
+  },
+  {
+    icon: UserCog,
+    title: "Estudiante",
+    description:
+      "Administra su perfil, CV, proyectos y enlaces desde un panel propio: borrador, vista previa y publicación.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Administrador",
+    description:
+      "Crea cuentas, revisa el estado de cada perfil y apoya la publicación de cualquier estudiante.",
+  },
+];
+
+const FEATURES = [
+  { icon: FileDown, label: "CV en PDF, con plantillas" },
+  { icon: QrCode, label: "Tarjeta con código QR" },
+  { icon: Users, label: "Aislamiento total entre cuentas" },
+];
 
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
-      <header className="border-b border-zinc-200 bg-white">
+      <header className="border-b border-slate-200/70 bg-white/80 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <span className="text-lg font-semibold tracking-tight">EProfile</span>
-          <Link href="/login" className={btnSecondary}>
+          <span className="flex items-center gap-2 text-lg font-bold tracking-tight text-slate-900">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-sm font-black text-white">
+              E
+            </span>
+            EProfile
+          </span>
+          <Link href="/login" className={btnPrimary}>
             Iniciar sesión
           </Link>
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-start justify-center gap-6 px-6 py-24">
-        <span className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium uppercase tracking-wide text-zinc-500">
-          Proyecto integrador · Nuevas Tecnologías
-        </span>
-        <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-white-900 sm:text-5xl">
-          Tu tarjeta de presentación digital
-        </h1>
-        <p className="max-w-xl text-lg text-zinc-600">
-          Perfil, currículum, proyectos y contacto en un único enlace fijo y un
-          código QR. Siempre actualizado, sin rehacer documentos.
-        </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Link href="/login" className={btnPrimary}>
-            Entrar a mi panel
-          </Link>
-        </div>
+      <main className="relative flex-1 overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(79,70,229,0.12),transparent)]"
+        />
 
-        <div className="mt-12 grid w-full gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-zinc-200 bg-white p-5">
-            <h2 className="text-sm font-semibold text-zinc-900">Visitante</h2>
-            <p className="mt-1 text-sm text-zinc-600">
-              Ve cualquier EProfile pública sin iniciar sesión, descarga el CV
-              en PDF y guarda el contacto.
-            </p>
+        <div className="mx-auto flex w-full max-w-5xl flex-col items-start gap-6 px-6 py-24">
+          <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
+            Proyecto integrador · Nuevas Tecnologías
+          </span>
+          <h1 className="max-w-2xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
+            Tu tarjeta de presentación,{" "}
+            <span className="bg-linear-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+              siempre viva
+            </span>
+          </h1>
+          <p className="max-w-xl text-lg leading-relaxed text-slate-600">
+            Perfil, currículum, proyectos y contacto en un único enlace fijo y
+            un código QR. Siempre actualizado, sin rehacer documentos.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <Link href="/login" className={`${btnPrimary} px-6 py-3 text-base`}>
+              Entrar a mi panel
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <div className="flex items-center gap-4 text-sm text-slate-500">
+              {FEATURES.map((f) => (
+                <span key={f.label} className="hidden items-center gap-1.5 sm:flex">
+                  <f.icon className="h-4 w-4 text-indigo-500" />
+                  {f.label}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-5">
-            <h2 className="text-sm font-semibold text-zinc-900">Estudiante</h2>
-            <p className="mt-1 text-sm text-zinc-600">
-              Administra su perfil, CV, proyectos y enlaces desde un panel
-              propio: borrador, vista previa y publicación.
-            </p>
-          </div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-5">
-            <h2 className="text-sm font-semibold text-zinc-900">
-              Administrador
-            </h2>
-            <p className="mt-1 text-sm text-zinc-600">
-              Crea cuentas, revisa el estado de cada perfil y apoya la
-              publicación de cualquier estudiante.
-            </p>
+
+          <div className="mt-16 grid w-full gap-4 sm:grid-cols-3">
+            {ROLES.map((role) => (
+              <div
+                key={role.title}
+                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
+              >
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition group-hover:bg-indigo-600 group-hover:text-white">
+                  <role.icon className="h-5 w-5" />
+                </div>
+                <h2 className="text-sm font-semibold text-slate-900">{role.title}</h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
+                  {role.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </main>
+
+      <footer className="border-t border-slate-200/70 bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-6 text-xs text-slate-400">
+          EProfile — Documento de requerimientos · Asignatura Nuevas Tecnologías
+        </div>
+      </footer>
     </div>
   );
 }

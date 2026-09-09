@@ -1,3 +1,4 @@
+import { FolderGit2, Plus } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { requireStudentAccess } from "@/lib/auth/dal";
 import { addProject, updateProject, deleteProject } from "../actions";
@@ -20,18 +21,25 @@ export default async function ProjectsPage({
   return (
     <div className="flex flex-col gap-6">
       <div className={card}>
-        <h1 className="mb-1 text-lg font-semibold text-zinc-900">Proyectos</h1>
-        <p className="mb-5 text-sm text-zinc-500">
-          Incluye tus proyectos personales, laborales y académicos. Marca los académicos: por transparencia, se
-          etiquetan como tales.
-        </p>
+        <div className="mb-6 flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+            <FolderGit2 className="h-4.5 w-4.5" />
+          </div>
+          <div>
+            <h1 className="text-lg font-semibold text-slate-900">Proyectos</h1>
+            <p className="text-sm text-slate-500">
+              Incluye proyectos personales, laborales y académicos. Marca los académicos: por
+              transparencia, se etiquetan como tales.
+            </p>
+          </div>
+        </div>
 
         <div className="flex flex-col gap-4">
           {projects.map((project) => (
             <form
               key={project.id}
               action={updateProject.bind(null, slug, project.id)}
-              className="rounded-xl border border-zinc-200 p-4"
+              className="rounded-xl border border-slate-200 bg-slate-50/60 p-4"
             >
               <div className="grid gap-3 sm:grid-cols-2">
                 <input name="name" defaultValue={project.name} placeholder="Nombre *" required className={input} />
@@ -40,8 +48,8 @@ export default async function ProjectsPage({
                 <input name="url" defaultValue={project.url ?? ""} placeholder="Enlace (opcional)" className={input} />
               </div>
               <textarea name="description" defaultValue={project.description ?? ""} placeholder="Descripción" className={`${textarea} mt-3`} />
-              <label className="mt-3 flex items-center gap-2 text-sm text-zinc-600">
-                <input type="checkbox" name="isAcademic" defaultChecked={project.isAcademic} />
+              <label className="mt-3 flex items-center gap-2 text-sm text-slate-600">
+                <input type="checkbox" name="isAcademic" defaultChecked={project.isAcademic} className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
                 Es un proyecto académico
               </label>
               <div className="mt-3 flex items-center gap-2">
@@ -50,11 +58,13 @@ export default async function ProjectsPage({
               </div>
             </form>
           ))}
-          {projects.length === 0 ? <p className="text-sm text-zinc-400">Aún no agregas proyectos.</p> : null}
+          {projects.length === 0 ? <p className="text-sm text-slate-400">Aún no agregas proyectos.</p> : null}
         </div>
 
-        <details className="mt-4 rounded-xl border border-dashed border-zinc-300 p-4">
-          <summary className="cursor-pointer text-sm font-medium text-zinc-700">+ Agregar proyecto</summary>
+        <details className="mt-4 rounded-xl border border-dashed border-slate-300 p-4 open:bg-slate-50/50">
+          <summary className="flex cursor-pointer items-center gap-1.5 text-sm font-medium text-slate-700">
+            <Plus className="h-4 w-4" /> Agregar proyecto
+          </summary>
           <form action={addProject.bind(null, slug)} className="mt-4 flex flex-col gap-3">
             <div className="grid gap-3 sm:grid-cols-2">
               <input name="name" placeholder="Nombre *" required className={input} />
@@ -63,8 +73,8 @@ export default async function ProjectsPage({
               <input name="url" placeholder="Enlace (opcional)" className={input} />
             </div>
             <textarea name="description" placeholder="Descripción" className={textarea} />
-            <label className="flex items-center gap-2 text-sm text-zinc-600">
-              <input type="checkbox" name="isAcademic" />
+            <label className="flex items-center gap-2 text-sm text-slate-600">
+              <input type="checkbox" name="isAcademic" className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
               Es un proyecto académico
             </label>
             <div>

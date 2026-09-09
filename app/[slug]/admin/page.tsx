@@ -1,14 +1,26 @@
 import Link from "next/link";
+import {
+  GraduationCap,
+  Briefcase,
+  FolderGit2,
+  Sparkles,
+  ExternalLink,
+  QrCode,
+  Eye,
+  CircleCheck,
+  CircleDashed,
+  Circle,
+} from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { requireStudentAccess } from "@/lib/auth/dal";
 import { getProfileStatus, isProfileCompleteEnoughToPublish } from "@/lib/publish";
-import { card, btnSecondary } from "@/lib/ui";
+import { card, btnSecondary, badge, badgeTones } from "@/lib/ui";
 import { PublishButton } from "./publish-button";
 
-const STATUS_LABEL: Record<string, { label: string; className: string }> = {
-  vacio: { label: "Vacío", className: "bg-zinc-100 text-zinc-600" },
-  borrador: { label: "Borrador", className: "bg-amber-100 text-amber-800" },
-  publicado: { label: "Publicado", className: "bg-emerald-100 text-emerald-800" },
+const STATUS_META: Record<string, { label: string; tone: string; icon: typeof Circle }> = {
+  vacio: { label: "Vacío", tone: badgeTones.neutral, icon: Circle },
+  borrador: { label: "Borrador", tone: badgeTones.warning, icon: CircleDashed },
+  publicado: { label: "Publicado", tone: badgeTones.success, icon: CircleCheck },
 };
 
 export default async function StudentDashboardPage({
@@ -28,19 +40,20 @@ export default async function StudentDashboardPage({
 
   const status = getProfileStatus(student);
   const canPublish = isProfileCompleteEnoughToPublish(student);
-  const statusMeta = STATUS_LABEL[status];
+  const meta = STATUS_META[status];
 
   return (
     <div className="flex flex-col gap-6">
       <div className={card}>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-sm text-zinc-500">Estado de tu EProfile</p>
-            <span className={`mt-1 inline-block rounded-full px-3 py-1 text-sm font-medium ${statusMeta.className}`}>
-              {statusMeta.label}
+            <p className="text-sm font-medium text-slate-500">Estado de tu EProfile</p>
+            <span className={`${badge} ${meta.tone} mt-2`}>
+              <meta.icon className="h-3.5 w-3.5" />
+              {meta.label}
             </span>
             {student.publishedAt ? (
-              <p className="mt-2 text-xs text-zinc-400">
+              <p className="mt-2 text-xs text-slate-400">
                 Última publicación: {new Date(student.publishedAt).toLocaleString("es-MX")}
               </p>
             ) : null}
@@ -49,9 +62,9 @@ export default async function StudentDashboardPage({
             {canPublish ? (
               <PublishButton slug={slug} />
             ) : (
-              <p className="max-w-xs text-right text-sm text-zinc-500">
+              <p className="max-w-xs text-right text-sm text-slate-500">
                 Completa al menos tu nombre y carrera en{" "}
-                <Link href={`/${slug}/admin/profile`} className="underline">
+                <Link href={`/${slug}/admin/profile`} className="font-medium text-indigo-600 underline">
                   Perfil
                 </Link>{" "}
                 para poder publicar.
@@ -63,35 +76,41 @@ export default async function StudentDashboardPage({
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { label: "Formación", value: educations, href: "cv" },
-          { label: "Experiencia", value: experiences, href: "cv" },
-          { label: "Proyectos", value: projects, href: "projects" },
-          { label: "Habilidades", value: skills, href: "skills" },
+          { label: "Formación", value: educations, href: "cv", icon: GraduationCap },
+          { label: "Experiencia", value: experiences, href: "cv", icon: Briefcase },
+          { label: "Proyectos", value: projects, href: "projects", icon: FolderGit2 },
+          { label: "Habilidades", value: skills, href: "skills", icon: Sparkles },
         ].map((item) => (
           <Link
             key={item.label}
             href={`/${slug}/admin/${item.href}`}
-            className="rounded-xl border border-zinc-200 bg-white p-4 transition hover:border-zinc-300"
+            className="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
           >
-            <p className="text-2xl font-semibold text-zinc-900">{item.value}</p>
-            <p className="text-sm text-zinc-500">{item.label}</p>
+            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 transition group-hover:bg-indigo-600 group-hover:text-white">
+              <item.icon className="h-4.5 w-4.5" />
+            </div>
+            <p className="text-2xl font-bold text-slate-900">{item.value}</p>
+            <p className="text-sm text-slate-500">{item.label}</p>
           </Link>
         ))}
       </div>
 
       <div className={card}>
-        <h2 className="mb-2 text-sm font-semibold text-zinc-900">Compartir tu EProfile</h2>
-        <p className="mb-4 text-sm text-zinc-500">
+        <h2 className="mb-1 text-sm font-semibold text-slate-900">Compartir tu EProfile</h2>
+        <p className="mb-4 text-sm text-slate-500">
           Este enlace y el código QR no cambian, aunque actualices tu contenido.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link href={`/${slug}`} target="_blank" className={btnSecondary}>
+            <ExternalLink className="h-4 w-4" />
             Ver perfil público
           </Link>
           <Link href={`/${slug}/card`} target="_blank" className={btnSecondary}>
+            <QrCode className="h-4 w-4" />
             Tarjeta con QR
           </Link>
           <Link href={`/${slug}/admin/preview`} className={btnSecondary}>
+            <Eye className="h-4 w-4" />
             Vista previa del borrador
           </Link>
         </div>

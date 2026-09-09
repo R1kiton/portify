@@ -1,3 +1,4 @@
+import { Sparkles } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { requireStudentAccess } from "@/lib/auth/dal";
 import { addSkill, deleteSkill } from "../actions";
@@ -27,8 +28,15 @@ export default async function SkillsPage({
   return (
     <div className="flex flex-col gap-6">
       <div className={card}>
-        <h1 className="mb-1 text-lg font-semibold text-zinc-900">Habilidades</h1>
-        <p className="mb-5 text-sm text-zinc-500">Agrúpalas por categoría para que se lean más claras.</p>
+        <div className="mb-6 flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+            <Sparkles className="h-4.5 w-4.5" />
+          </div>
+          <div>
+            <h1 className="text-lg font-semibold text-slate-900">Habilidades</h1>
+            <p className="text-sm text-slate-500">Agrúpalas por categoría para que se lean más claras.</p>
+          </div>
+        </div>
 
         <form action={addSkill.bind(null, slug)} className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="flex-1">
@@ -50,16 +58,20 @@ export default async function SkillsPage({
       </div>
 
       {Object.keys(grouped).length === 0 ? (
-        <p className="text-sm text-zinc-400">Aún no agregas habilidades.</p>
+        <p className="text-sm text-slate-400">Aún no agregas habilidades.</p>
       ) : (
         Object.entries(grouped).map(([category, items]) => (
           <div key={category} className={card}>
-            <h2 className="mb-3 text-sm font-semibold text-zinc-700">{category}</h2>
+            <h2 className="mb-3 text-sm font-semibold text-slate-700">{category}</h2>
             <div className="flex flex-wrap gap-2">
               {items.map((skill) => (
-                <form key={skill.id} action={deleteSkill.bind(null, slug, skill.id)} className="flex items-center gap-1 rounded-full bg-zinc-100 py-1 pl-3 pr-1">
-                  <span className="text-sm text-zinc-700">{skill.name}</span>
-                  <DeleteButton label="×" confirmMessage={`¿Eliminar "${skill.name}"?`} />
+                <form
+                  key={skill.id}
+                  action={deleteSkill.bind(null, slug, skill.id)}
+                  className="flex items-center gap-1.5 rounded-full border border-indigo-100 bg-indigo-50 py-1.5 pl-3.5 pr-1.5 text-indigo-700"
+                >
+                  <span className="text-sm font-medium">{skill.name}</span>
+                  <DeleteButton iconOnly confirmMessage={`¿Eliminar "${skill.name}"?`} />
                 </form>
               ))}
             </div>

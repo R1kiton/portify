@@ -1,5 +1,8 @@
-import { Document, Page, Text, View, StyleSheet, Link } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet, Link, Font } from "@react-pdf/renderer";
 import type { PublishedProfile } from "@/lib/publish";
+
+// Disable hyphenation so names/words never break mid-word (e.g. "Com-pleto").
+Font.registerHyphenationCallback((word) => [word]);
 
 const classicStyles = StyleSheet.create({
   page: { padding: 40, fontSize: 10, fontFamily: "Helvetica", color: "#1a1a1a" },
@@ -39,7 +42,7 @@ const modernStyles = StyleSheet.create({
   page: { flexDirection: "row", fontFamily: "Helvetica", fontSize: 10, color: "#1a1a1a" },
   sidebar: { width: "34%", backgroundColor: "#111827", color: "#ffffff", padding: 24 },
   main: { width: "66%", padding: 28 },
-  name: { fontSize: 20, fontWeight: 700, marginBottom: 4 },
+  name: { fontSize: 18, fontWeight: 700, marginBottom: 4, lineHeight: 1.2 },
   career: { fontSize: 11, color: "#d1d5db", marginBottom: 16 },
   sidebarSectionTitle: {
     fontSize: 10,

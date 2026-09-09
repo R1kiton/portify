@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { UserRound, Camera, Palette } from "lucide-react";
 import { requireStudentAccess } from "@/lib/auth/dal";
 import { updateProfile, setCvTemplate } from "../actions";
 import { CV_TEMPLATES } from "@/lib/pdf/cv-document";
@@ -18,24 +19,41 @@ export default async function ProfileEditPage({
   return (
     <div className="flex flex-col gap-6">
       <div className={card}>
-        <h1 className="mb-1 text-lg font-semibold text-zinc-900">Perfil</h1>
-        <p className="mb-6 text-sm text-zinc-500">
-          Nombre y carrera son obligatorios para poder publicar.
-        </p>
+        <div className="mb-6 flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+            <UserRound className="h-4.5 w-4.5" />
+          </div>
+          <div>
+            <h1 className="text-lg font-semibold text-slate-900">Perfil</h1>
+            <p className="text-sm text-slate-500">
+              Nombre y carrera son obligatorios para poder publicar.
+            </p>
+          </div>
+        </div>
 
         <form action={boundUpdate} className="flex flex-col gap-5">
-          <div className="flex items-center gap-4">
-            <div className="relative h-20 w-20 overflow-hidden rounded-full border border-zinc-200 bg-zinc-100">
+          <div className="flex items-center gap-4 rounded-xl bg-slate-50 p-4">
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border-2 border-white bg-slate-200 shadow-sm">
               {student.photoUrl ? (
                 <Image src={student.photoUrl} alt="Foto de perfil" fill sizes="80px" className="object-cover" />
-              ) : null}
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-slate-400">
+                  <Camera className="h-6 w-6" />
+                </div>
+              )}
             </div>
             <div className="flex-1">
               <label htmlFor="photo" className={label}>
                 Foto de perfil
               </label>
-              <input id="photo" name="photo" type="file" accept="image/png,image/jpeg,image/webp" className="text-sm" />
-              <p className="mt-1 text-xs text-zinc-400">JPG, PNG o WEBP, máx. 5MB.</p>
+              <input
+                id="photo"
+                name="photo"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-indigo-50 file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100"
+              />
+              <p className="mt-1 text-xs text-slate-400">JPG, PNG o WEBP, máx. 5MB.</p>
             </div>
           </div>
 
@@ -101,10 +119,17 @@ export default async function ProfileEditPage({
       </div>
 
       <div className={card}>
-        <h2 className="mb-1 text-sm font-semibold text-zinc-900">Plantilla del CV en PDF</h2>
-        <p className="mb-4 text-sm text-zinc-500">
-          Elige el estilo con el que se genera tu CV descargable. El contenido siempre es el mismo que tu perfil publicado.
-        </p>
+        <div className="mb-4 flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+            <Palette className="h-4.5 w-4.5" />
+          </div>
+          <div>
+            <h2 className="text-sm font-semibold text-slate-900">Plantilla del CV en PDF</h2>
+            <p className="text-sm text-slate-500">
+              El contenido siempre es el mismo que tu perfil publicado.
+            </p>
+          </div>
+        </div>
         <form action={boundTemplate} className="flex flex-wrap items-center gap-3">
           <select name="cvTemplate" defaultValue={student.cvTemplate} className={`${input} w-auto`}>
             {CV_TEMPLATES.map((t) => (
