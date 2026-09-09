@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { listPublishedProfiles } from "@/lib/public-student";
 import { StudentDirectory } from "@/components/student-directory";
 
-export const metadata = { title: "Estudiantes — Prolify" };
+export const metadata = { title: "Estudiantes — Portify" };
 
 // Must be rendered per-request: this list changes every time someone
 // publishes, and there are no dynamic params here to force that by default.
@@ -25,7 +25,7 @@ export default async function StudentsDirectoryPage() {
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-800"
         >
           <ArrowLeft className="h-4 w-4" />
-          Prolify
+          Portify
         </Link>
 
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Prolify — Tarjeta de presentación digital",
+  title: "Portify — Tarjeta de presentación digital",
   description:
     "Plataforma de tarjetas de presentación digitales para estudiantes: perfil, CV y proyectos en un solo enlace.",
 };

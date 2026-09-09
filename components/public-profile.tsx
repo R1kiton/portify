@@ -260,7 +260,7 @@ export function PublicProfile({
         </div>
 
         <footer className="mt-14 border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
-          Prolify · Prolify.com/{slug}
+          Portify · Portify.com/{slug}
         </footer>
       </div>
     </div>

@@ -16,7 +16,7 @@ export function ToggleActiveButton({ userId, active }: { userId: string; active:
         onClick={(e) => {
           e.preventDefault();
           const message = active
-            ? "¿Desactivar esta cuenta? Su Prolify dejará de verse."
+            ? "¿Desactivar esta cuenta? Su Portify dejará de verse."
             : "¿Reactivar esta cuenta?";
           if (window.confirm(message)) {
             startTransition(() => toggleActiveAction(userId, new FormData()));

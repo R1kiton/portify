@@ -1,8 +1,8 @@
-# Prolify — Tarjeta de presentación digital
+# Portify — Tarjeta de presentación digital
 
 Plataforma de tarjetas de presentación digitales para estudiantes: perfil,
 currículum, proyectos y contacto en una sola ruta permanente
-(`Prolify.com/<slug>`), compartible con un enlace fijo y un código QR.
+(`Portify.com/<slug>`), compartible con un enlace fijo y un código QR.
 
 Proyecto integrador — asignatura Nuevas Tecnologías.
 
@@ -10,7 +10,7 @@ Proyecto integrador — asignatura Nuevas Tecnologías.
 
 - **Roles**: visitante (sin cuenta), estudiante (propietario) y administrador
   de plataforma, cada uno con su propio panel y permisos.
-- **Prolify pública** (`/[slug]`): foto, nombre, carrera y reseña primero;
+- **Portify pública** (`/[slug]`): foto, nombre, carrera y reseña primero;
   después CV, habilidades, proyectos, reconocimientos y contacto. Las
   secciones vacías no se muestran.
 - **CV en PDF** (`/[slug]/cv.pdf`), generado en el momento a partir de la
@@ -39,7 +39,7 @@ Proyecto integrador — asignatura Nuevas Tecnologías.
 - [x] El CV se consulta en el sitio y se descarga en PDF con la misma información.
 - [x] El estudiante actualiza su contenido desde el panel sin escribir código.
 - [x] Los cambios publicados se ven desde otro dispositivo, sin iniciar sesión.
-- [x] El visitante consulta la Prolify libremente; solo el dueño (o el admin) la modifica.
+- [x] El visitante consulta la Portify libremente; solo el dueño (o el admin) la modifica.
 - [x] Los borradores no aparecen en público hasta publicarse.
 - [x] Interfaces adaptables (celular y computadora) con Tailwind.
 - [x] El QR abre la ruta definitiva y funciona sin sesión de administrador.
@@ -106,7 +106,7 @@ Proyecto integrador — asignatura Nuevas Tecnologías.
 | Rol                  | Correo                         | Contraseña      | Ruta               |
 | -------------------- | ------------------------------- | --------------- | ------------------ |
 | Administrador         | valor de `SEED_ADMIN_EMAIL`     | `SEED_ADMIN_PASSWORD` | `/admin`      |
-| Estudiante (demo)      | `demo.estudiante@Prolify.com` | `Demo1234!`      | `/demo/admin`       |
+| Estudiante (demo)      | `demo.estudiante@Portify.com` | `Demo1234!`      | `/demo/admin`       |
 
 El perfil demo se crea en borrador; publícalo desde `/demo/admin` para verlo
 en `/demo`.

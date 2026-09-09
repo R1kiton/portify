@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { UserRound, Camera, Palette } from "lucide-react";
 import { requireStudentAccess } from "@/lib/auth/dal";
-import { updatProlify, setCvTemplate } from "../actions";
+import { updatPortify, setCvTemplate } from "../actions";
 import { CV_TEMPLATES } from "@/lib/pdf/cv-document";
 import { card, input, label, textarea } from "@/lib/ui";
 import { SubmitButton } from "@/components/submit-button";
@@ -13,7 +13,7 @@ export default async function ProfileEditPage({
 }) {
   const { slug } = await params;
   const { student } = await requireStudentAccess(slug);
-  const boundUpdate = updatProlify.bind(null, slug);
+  const boundUpdate = updatPortify.bind(null, slug);
   const boundTemplate = setCvTemplate.bind(null, slug);
 
   return (

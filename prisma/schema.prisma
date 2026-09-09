@@ -1,4 +1,4 @@
-// Prisma schema for the Prolify platform.
+// Prisma schema for the Portify platform.
 // Learn more: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -29,7 +29,7 @@ model User {
   @@map("users")
 }
 
-// The public, editable Prolify that lives at Prolify.com/<slug>.
+// The public, editable Portify that lives at Portify.com/<slug>.
 model Student {
   id       String @id @default(cuid())
   slug     String @unique

@@ -12,7 +12,7 @@ async function hash(plain: string) {
 }
 
 async function main() {
-  const adminEmail = (process.env.SEED_ADMIN_EMAIL || "admin@Prolify.com").toLowerCase();
+  const adminEmail = (process.env.SEED_ADMIN_EMAIL || "admin@Portify.com").toLowerCase();
   const adminPassword = process.env.SEED_ADMIN_PASSWORD || "ChangeMe123!";
 
   await prisma.user.upsert({
@@ -26,7 +26,7 @@ async function main() {
   });
   console.log(`Platform admin ready: ${adminEmail} / ${adminPassword}`);
 
-  const demoEmail = "demo.estudiante@Prolify.com";
+  const demoEmail = "demo.estudiante@Portify.com";
   const demoPassword = "Demo1234!";
   const demoSlug = "demo";
 
@@ -85,7 +85,7 @@ async function main() {
       data: [
         {
           studentId,
-          name: "Plataforma Prolify",
+          name: "Plataforma Portify",
           description: "Tarjeta de presentación digital construida como proyecto integrador.",
           techStack: "Next.js, Prisma, PostgreSQL",
           role: "Desarrollador full-stack",

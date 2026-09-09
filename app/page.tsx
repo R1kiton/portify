@@ -15,7 +15,7 @@ const ROLES = [
     icon: Eye,
     title: "Visitante",
     description:
-      "Ve cualquier Prolify pública sin iniciar sesión, descarga el CV en PDF y guarda el contacto.",
+      "Ve cualquier Portify pública sin iniciar sesión, descarga el CV en PDF y guarda el contacto.",
   },
   {
     icon: UserCog,
@@ -46,7 +46,7 @@ export default function Home() {
             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-sm font-black text-white">
               E
             </span>
-            Prolify
+            Portify
           </span>
           <div className="flex items-center gap-3 sm:gap-5">
             <Link href="/estudiantes" className="text-sm font-medium text-slate-600 hover:text-slate-900">
@@ -118,7 +118,7 @@ export default function Home() {
 
       <footer className="border-t border-slate-200/70 bg-white">
         <div className="mx-auto max-w-5xl px-4 py-6 text-xs text-slate-400 sm:px-6">
-          Prolify — Documento de requerimientos · Asignatura Nuevas Tecnologías
+          Portify — Documento de requerimientos · Asignatura Nuevas Tecnologías
         </div>
       </footer>
     </div>

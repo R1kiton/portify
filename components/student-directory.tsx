@@ -45,7 +45,7 @@ export function StudentDirectory({ entries }: { entries: DirectoryEntry[] }) {
           <Users className="h-8 w-8 text-slate-300" />
           <p className="text-sm font-medium text-slate-500">
             {entries.length === 0
-              ? "Todavía no hay Prolifys publicados."
+              ? "Todavía no hay Portifys publicados."
               : `Sin resultados para "${query}".`}
           </p>
         </div>
