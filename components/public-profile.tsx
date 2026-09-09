@@ -61,7 +61,7 @@ export function PublicProfile({
         />
       </div>
 
-      <div className="px-6">
+      <div className="px-4 sm:px-6">
         <div className="-mt-14 flex flex-col items-center gap-4 text-center sm:-mt-16 sm:flex-row sm:items-end sm:text-left">
           <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-lg sm:h-32 sm:w-32">
             {profile.photoUrl ? (
@@ -73,7 +73,7 @@ export function PublicProfile({
             )}
           </div>
           <div className="sm:pb-1">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">{profile.fullName}</h1>
+            <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">{profile.fullName}</h1>
             <p className="mt-1 text-lg font-medium text-indigo-600">{profile.career}</p>
           </div>
         </div>

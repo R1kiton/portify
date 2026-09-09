@@ -164,7 +164,7 @@ export default async function CvEditPage({
             <label className={label}>Descripción</label>
             <input name="description" className={input} />
           </div>
-          <div className="w-32">
+          <div className="w-full sm:w-32">
             <label className={label}>Fecha</label>
             <input name="date" className={input} placeholder="2024" />
           </div>

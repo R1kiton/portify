@@ -15,3 +15,21 @@ export async function getVisiblePublishedProfile(slug: string): Promise<Publishe
   if (!student) return null;
   return getPublishedProfile(student);
 }
+
+export type DirectoryEntry = { slug: string; profile: PublishedProfile };
+
+// Every published, active profile — used by the public directory (/estudiantes).
+export async function listPublishedProfiles(): Promise<DirectoryEntry[]> {
+  const students = await prisma.student.findMany({
+    where: { user: { active: true } },
+    include: { user: true },
+    orderBy: { publishedAt: "desc" },
+  });
+
+  return students
+    .map((student) => {
+      const profile = getPublishedProfile(student);
+      return profile ? { slug: student.slug, profile } : null;
+    })
+    .filter((entry): entry is DirectoryEntry => entry !== null);
+}

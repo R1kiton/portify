@@ -72,7 +72,7 @@ export default async function PlatformAdminPage() {
         {students.length === 0 ? (
           <p className="text-sm text-slate-400">Aún no hay cuentas de estudiante.</p>
         ) : (
-          <div className="-mx-6 overflow-x-auto px-6">
+          <div className="-mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-400">

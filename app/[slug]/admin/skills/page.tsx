@@ -43,7 +43,7 @@ export default async function SkillsPage({
             <label className={label}>Habilidad *</label>
             <input name="name" required className={input} placeholder="Ej. React" />
           </div>
-          <div className="w-48">
+          <div className="w-full sm:w-48">
             <label className={label}>Categoría</label>
             <select name="category" defaultValue="Técnicas" className={input}>
               {CATEGORIES.map((c) => (

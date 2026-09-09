@@ -26,14 +26,17 @@ export function AdminNav({ slug }: { slug: string }) {
   const base = `/${slug}/admin`;
 
   return (
-    <ul className="flex flex-col gap-1">
+    <ul className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0 lg:pb-0">
       {NAV_ITEMS.map((item) => {
         const href = `${base}${item.href}`;
         const isActive = item.href === "" ? pathname === base : pathname?.startsWith(href);
         return (
-          <li key={item.href}>
-            <Link href={href} className={isActive ? navLinkActive : navLink}>
-              <item.icon className="h-4 w-4" />
+          <li key={item.href} className="shrink-0 lg:shrink">
+            <Link
+              href={href}
+              className={`${isActive ? navLinkActive : navLink} whitespace-nowrap lg:whitespace-normal`}
+            >
+              <item.icon className="h-4 w-4 shrink-0" />
               {item.label}
             </Link>
           </li>

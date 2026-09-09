@@ -18,7 +18,7 @@ export default async function CardPage({
   const url = profileUrl(slug);
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col items-center justify-center gap-6 bg-slate-50 px-6 py-16 print:bg-white">
+    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col items-center justify-center gap-6 bg-slate-50 px-4 py-10 sm:px-6 sm:py-16 print:bg-white">
       <div className="self-start print:hidden">
         <Link
           href={`/${slug}`}
@@ -29,14 +29,15 @@ export default async function CardPage({
         </Link>
       </div>
 
-      <div className="flex w-full flex-col items-center gap-5 rounded-2xl border border-slate-200/80 bg-white p-8 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.08)] print:border-0 print:shadow-none">
-        <div className="rounded-2xl border border-slate-100 bg-white p-3">
+      <div className="flex w-full flex-col items-center gap-5 rounded-2xl border border-slate-200/80 bg-white p-5 text-center shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.08)] sm:p-8 print:border-0 print:shadow-none">
+        <div className="w-full max-w-50 rounded-2xl border border-slate-100 bg-white p-3">
           <Image
             src={`/${slug}/qrcode`}
             alt={`Código QR de ${profile.fullName}`}
             width={220}
             height={220}
             unoptimized
+            className="h-auto w-full"
           />
         </div>
         <div>

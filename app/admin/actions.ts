@@ -7,7 +7,7 @@ import { requirePlatformAdmin } from "@/lib/auth/dal";
 import { hashPassword, generateTempPassword } from "@/lib/auth/password";
 import { UserRole } from "@/app/generated/prisma/enums";
 
-const RESERVED_SLUGS = ["admin", "login", "api"];
+const RESERVED_SLUGS = ["admin", "login", "api", "estudiantes"];
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const CreateStudentSchema = z.object({
