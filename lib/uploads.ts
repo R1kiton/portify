@@ -1,6 +1,5 @@
 import "server-only";
-import { writeFile, mkdir } from "node:fs/promises";
-import path from "node:path";
+import { supabaseAdmin } from "@/lib/supabase";
 
 const MAX_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES: Record<string, string> = {
@@ -9,9 +8,23 @@ const ALLOWED_TYPES: Record<string, string> = {
   "image/webp": "webp",
 };
 
-// Photos are stored on the local filesystem under public/uploads. This is
-// enough for local development and grading; a production deployment on a
-// serverless platform would swap this for object storage (e.g. Supabase Storage).
+const BUCKET = "photos";
+let bucketReady: Promise<void> | null = null;
+
+// Vercel's serverless filesystem is read-only, so photos live in Supabase
+// Storage instead. The bucket is created lazily on first use.
+function ensureBucket(): Promise<void> {
+  if (!bucketReady) {
+    bucketReady = supabaseAdmin.storage.createBucket(BUCKET, { public: true }).then((res) => {
+      if (res.error && !/already exists/i.test(res.error.message)) {
+        bucketReady = null;
+        throw res.error;
+      }
+    });
+  }
+  return bucketReady;
+}
+
 export async function savePhotoUpload(file: File, studentId: string): Promise<string> {
   const extension = ALLOWED_TYPES[file.type];
   if (!extension) {
@@ -21,12 +34,18 @@ export async function savePhotoUpload(file: File, studentId: string): Promise<st
     throw new Error("La imagen supera el tamaño máximo de 5MB.");
   }
 
-  const uploadsDir = path.join(process.cwd(), "public", "uploads");
-  await mkdir(uploadsDir, { recursive: true });
+  await ensureBucket();
 
   const filename = `${studentId}-${Date.now()}.${extension}`;
   const bytes = Buffer.from(await file.arrayBuffer());
-  await writeFile(path.join(uploadsDir, filename), bytes);
 
-  return `/uploads/${filename}`;
+  const { error } = await supabaseAdmin.storage.from(BUCKET).upload(filename, bytes, {
+    contentType: file.type,
+    cacheControl: "31536000",
+  });
+  if (error) {
+    throw new Error(`No se pudo subir la foto: ${error.message}`);
+  }
+
+  return supabaseAdmin.storage.from(BUCKET).getPublicUrl(filename).data.publicUrl;
 }

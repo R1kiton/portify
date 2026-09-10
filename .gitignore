@@ -42,9 +42,5 @@ next-env.d.ts
 
 /app/generated/prisma
 
-# user-uploaded photos (local dev storage; not meant for version control)
-/public/uploads/*
-!/public/uploads/.gitkeep
-
 #claude
 CLAUDE.md

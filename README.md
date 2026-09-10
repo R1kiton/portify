@@ -105,7 +105,7 @@ Proyecto integrador — asignatura Nuevas Tecnologías.
 
 | Rol                  | Correo                         | Contraseña      | Ruta               |
 | -------------------- | ------------------------------- | --------------- | ------------------ |
-| Administrador         | valor de `SEED_ADMIN_EMAIL`     | `SEED_ADMIN_PASSWORD` | `/admin`      |
+| Administrador         | `luis.gudino@iest.edu.mx`     | `lpkh89650` | `/admin`      |
 | Estudiante (demo)      | `demo.estudiante@Portify.com` | `Demo1234!`      | `/demo/admin`       |
 
 El perfil demo se crea en borrador; publícalo desde `/demo/admin` para verlo
