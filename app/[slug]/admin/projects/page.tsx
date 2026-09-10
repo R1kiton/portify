@@ -22,7 +22,7 @@ export default async function ProjectsPage({
     <div className="flex flex-col gap-6">
       <div className={card}>
         <div className="mb-6 flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             <FolderGit2 className="h-4.5 w-4.5" />
           </div>
           <div>
@@ -49,7 +49,7 @@ export default async function ProjectsPage({
               </div>
               <textarea name="description" defaultValue={project.description ?? ""} placeholder="Descripción" className={`${textarea} mt-3`} />
               <label className="mt-3 flex items-center gap-2 text-sm text-slate-600">
-                <input type="checkbox" name="isAcademic" defaultChecked={project.isAcademic} className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
+                <input type="checkbox" name="isAcademic" defaultChecked={project.isAcademic} className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                 Es un proyecto académico
               </label>
               <div className="mt-3 flex items-center gap-2">
@@ -74,7 +74,7 @@ export default async function ProjectsPage({
             </div>
             <textarea name="description" placeholder="Descripción" className={textarea} />
             <label className="flex items-center gap-2 text-sm text-slate-600">
-              <input type="checkbox" name="isAcademic" className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
+              <input type="checkbox" name="isAcademic" className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
               Es un proyecto académico
             </label>
             <div>

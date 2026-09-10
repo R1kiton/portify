@@ -9,7 +9,7 @@ export default function LoginPage() {
     <div className="relative flex flex-1 items-center justify-center overflow-hidden px-4 py-12 sm:px-6 sm:py-16">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(50%_50%_at_50%_0%,rgba(79,70,229,0.12),transparent)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(50%_50%_at_50%_0%,rgba(5,150,105,0.12),transparent)]"
       />
 
       <div className="w-full max-w-sm">
@@ -22,7 +22,7 @@ export default function LoginPage() {
         </Link>
 
         <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.08)] sm:p-8">
-          <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+          <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
             <LockKeyhole className="h-5 w-5" />
           </div>
           <h1 className="text-xl font-bold tracking-tight text-slate-900">

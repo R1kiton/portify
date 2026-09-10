@@ -20,7 +20,7 @@ export default async function ProfileEditPage({
     <div className="flex flex-col gap-6">
       <div className={card}>
         <div className="mb-6 flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             <UserRound className="h-4.5 w-4.5" />
           </div>
           <div>
@@ -51,7 +51,7 @@ export default async function ProfileEditPage({
                 name="photo"
                 type="file"
                 accept="image/png,image/jpeg,image/webp"
-                className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-indigo-50 file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100"
+                className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-emerald-50 file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-emerald-700 hover:file:bg-emerald-100"
               />
               <p className="mt-1 text-xs text-slate-400">JPG, PNG o WEBP, máx. 5MB.</p>
             </div>
@@ -120,7 +120,7 @@ export default async function ProfileEditPage({
 
       <div className={card}>
         <div className="mb-4 flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             <Palette className="h-4.5 w-4.5" />
           </div>
           <div>

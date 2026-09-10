@@ -27,7 +27,7 @@ export default async function PlatformAdminPage() {
     <div className="flex flex-col gap-8">
       <div className="grid gap-4 sm:grid-cols-3">
         <div className={card}>
-          <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+          <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             <Users className="h-4.5 w-4.5" />
           </div>
           <p className="text-2xl font-bold text-slate-900">{students.length}</p>
@@ -51,7 +51,7 @@ export default async function PlatformAdminPage() {
 
       <div className={card}>
         <div className="mb-6 flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             <UserPlus className="h-4.5 w-4.5" />
           </div>
           <div>
@@ -91,7 +91,7 @@ export default async function PlatformAdminPage() {
                     <tr key={student.id} className="align-top">
                       <td className="py-3.5 pr-4">
                         <div className="flex items-center gap-3">
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-700">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-sm font-semibold text-emerald-700">
                             {initial}
                           </span>
                           <div>

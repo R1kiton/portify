@@ -40,7 +40,7 @@ export default async function StudentAdminLayout({
             <Link
               href={`/${student.slug}`}
               target="_blank"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-indigo-600"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-emerald-600"
             >
               <span className="hidden sm:inline">Ver perfil público</span>
               <ExternalLink className="h-3.5 w-3.5" />

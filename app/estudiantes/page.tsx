@@ -16,7 +16,7 @@ export default async function StudentsDirectoryPage() {
     <div className="relative flex-1 overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[320px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(79,70,229,0.10),transparent)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[320px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(5,150,105,0.10),transparent)]"
       />
 
       <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14">

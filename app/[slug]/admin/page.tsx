@@ -64,7 +64,7 @@ export default async function StudentDashboardPage({
             ) : (
               <p className="max-w-xs text-right text-sm text-slate-500">
                 Completa al menos tu nombre y carrera en{" "}
-                <Link href={`/${slug}/admin/profile`} className="font-medium text-indigo-600 underline">
+                <Link href={`/${slug}/admin/profile`} className="font-medium text-emerald-600 underline">
                   Perfil
                 </Link>{" "}
                 para poder publicar.
@@ -84,9 +84,9 @@ export default async function StudentDashboardPage({
           <Link
             key={item.label}
             href={`/${slug}/admin/${item.href}`}
-            className="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
+            className="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md"
           >
-            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 transition group-hover:bg-indigo-600 group-hover:text-white">
+            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 transition group-hover:bg-emerald-600 group-hover:text-white">
               <item.icon className="h-4.5 w-4.5" />
             </div>
             <p className="text-2xl font-bold text-slate-900">{item.value}</p>

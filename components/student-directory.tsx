@@ -55,27 +55,27 @@ export function StudentDirectory({ entries }: { entries: DirectoryEntry[] }) {
             <Link
               key={slug}
               href={`/${slug}`}
-              className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
+              className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md"
             >
               <div className="flex items-center gap-3">
                 <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-slate-100">
                   {profile.photoUrl ? (
                     <Image src={profile.photoUrl} alt={profile.fullName} fill sizes="48px" className="object-cover" />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-indigo-100 to-violet-100 text-lg font-bold text-indigo-500">
+                    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-emerald-100 to-teal-100 text-lg font-bold text-emerald-500">
                       {profile.fullName.charAt(0).toUpperCase()}
                     </div>
                   )}
                 </div>
                 <div className="min-w-0">
                   <p className="truncate font-semibold text-slate-900">{profile.fullName}</p>
-                  <p className="truncate text-sm text-indigo-600">{profile.career}</p>
+                  <p className="truncate text-sm text-emerald-600">{profile.career}</p>
                 </div>
               </div>
               {profile.headline ? (
                 <p className="line-clamp-2 text-sm text-slate-500">{profile.headline}</p>
               ) : null}
-              <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-slate-400 transition group-hover:text-indigo-600">
+              <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-slate-400 transition group-hover:text-emerald-600">
                 Ver perfil
                 <ArrowRight className="h-3.5 w-3.5" />
               </span>

@@ -29,7 +29,7 @@ export default async function SkillsPage({
     <div className="flex flex-col gap-6">
       <div className={card}>
         <div className="mb-6 flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             <Sparkles className="h-4.5 w-4.5" />
           </div>
           <div>
@@ -68,7 +68,7 @@ export default async function SkillsPage({
                 <form
                   key={skill.id}
                   action={deleteSkill.bind(null, slug, skill.id)}
-                  className="flex items-center gap-1.5 rounded-full border border-indigo-100 bg-indigo-50 py-1.5 pl-3.5 pr-1.5 text-indigo-700"
+                  className="flex items-center gap-1.5 rounded-full border border-emerald-100 bg-emerald-50 py-1.5 pl-3.5 pr-1.5 text-emerald-700"
                 >
                   <span className="text-sm font-medium">{skill.name}</span>
                   <DeleteButton iconOnly confirmMessage={`¿Eliminar "${skill.name}"?`} />

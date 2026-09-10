@@ -43,7 +43,7 @@ export default function Home() {
       <header className="border-b border-slate-200/70 bg-white/80 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-4 sm:px-6">
           <span className="flex items-center gap-2 text-lg font-bold tracking-tight text-slate-900">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-sm font-black text-white">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-sm font-black text-white">
               E
             </span>
             Portify
@@ -62,16 +62,16 @@ export default function Home() {
       <main className="relative flex-1 overflow-hidden">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(79,70,229,0.12),transparent)]"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(5,150,105,0.12),transparent)]"
         />
 
         <div className="mx-auto flex w-full max-w-5xl flex-col items-start gap-6 px-4 py-16 sm:px-6 sm:py-24">
-          <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
+          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">
             Proyecto integrador · Nuevas Tecnologías
           </span>
           <h1 className="max-w-2xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
             Tu tarjeta de presentación,{" "}
-            <span className="bg-linear-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
               siempre viva
             </span>
           </h1>
@@ -90,7 +90,7 @@ export default function Home() {
             <div className="flex items-center gap-4 text-sm text-slate-500">
               {FEATURES.map((f) => (
                 <span key={f.label} className="hidden items-center gap-1.5 sm:flex">
-                  <f.icon className="h-4 w-4 text-indigo-500" />
+                  <f.icon className="h-4 w-4 text-emerald-500" />
                   {f.label}
                 </span>
               ))}
@@ -101,9 +101,9 @@ export default function Home() {
             {ROLES.map((role) => (
               <div
                 key={role.title}
-                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md sm:p-6"
+                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md sm:p-6"
               >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition group-hover:bg-indigo-600 group-hover:text-white">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 transition group-hover:bg-emerald-600 group-hover:text-white">
                   <role.icon className="h-5 w-5" />
                 </div>
                 <h2 className="text-sm font-semibold text-slate-900">{role.title}</h2>

@@ -27,7 +27,7 @@ function SectionTitle({
 }) {
   return (
     <h2 className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-slate-500">
-      <Icon className="h-4 w-4 text-indigo-500" />
+      <Icon className="h-4 w-4 text-emerald-500" />
       {children}
     </h2>
   );
@@ -54,7 +54,7 @@ export function PublicProfile({
   return (
     <div className="mx-auto w-full max-w-3xl pb-16">
       {/* Cover + header */}
-      <div className="relative h-40 w-full overflow-hidden bg-linear-to-br from-indigo-600 via-indigo-500 to-violet-500 sm:h-48">
+      <div className="relative h-40 w-full overflow-hidden bg-linear-to-br from-emerald-600 via-emerald-500 to-teal-500 sm:h-48">
         <div
           aria-hidden
           className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_20%_20%,white,transparent_35%),radial-gradient(circle_at_80%_60%,white,transparent_40%)]"
@@ -67,14 +67,14 @@ export function PublicProfile({
             {profile.photoUrl ? (
               <Image src={profile.photoUrl} alt={profile.fullName} fill sizes="128px" className="object-cover" />
             ) : (
-              <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-indigo-100 to-violet-100 text-4xl font-bold text-indigo-500">
+              <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-emerald-100 to-teal-100 text-4xl font-bold text-emerald-500">
                 {profile.fullName.charAt(0).toUpperCase()}
               </div>
             )}
           </div>
           <div className="sm:pb-1">
             <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">{profile.fullName}</h1>
-            <p className="mt-1 text-lg font-medium text-indigo-600">{profile.career}</p>
+            <p className="mt-1 text-lg font-medium text-emerald-600">{profile.career}</p>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ export function PublicProfile({
         <div className="mt-6 flex flex-wrap justify-center gap-3 border-b border-slate-200 pb-8 sm:justify-start">
           <a
             href={`/${slug}/cv.pdf`}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm shadow-indigo-600/20 transition hover:bg-indigo-500"
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm shadow-emerald-600/20 transition hover:bg-emerald-500"
           >
             <FileDown className="h-4 w-4" />
             Descargar CV
@@ -116,7 +116,7 @@ export function PublicProfile({
               <div className="flex flex-col gap-6 border-l-2 border-slate-100 pl-5">
                 {profile.experiences.map((e, i) => (
                   <div key={i} className="relative">
-                    <span className="absolute -left-6.5 top-1 h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-indigo-100" />
+                    <span className="absolute -left-6.5 top-1 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100" />
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                       <p className="font-semibold text-slate-900">
                         {e.role} <span className="font-normal text-slate-400">·</span> {e.company}
@@ -136,7 +136,7 @@ export function PublicProfile({
               <div className="flex flex-col gap-6 border-l-2 border-slate-100 pl-5">
                 {profile.educations.map((e, i) => (
                   <div key={i} className="relative">
-                    <span className="absolute -left-6.5 top-1 h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-indigo-100" />
+                    <span className="absolute -left-6.5 top-1 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100" />
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                       <p className="font-semibold text-slate-900">{e.institution}</p>
                       <p className="text-sm text-slate-400">{dateRange(e.startDate, e.endDate)}</p>
@@ -158,7 +158,7 @@ export function PublicProfile({
                 {profile.projects.map((p, i) => (
                   <div
                     key={i}
-                    className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
+                    className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <p className="font-semibold text-slate-900">{p.name}</p>
@@ -168,7 +168,7 @@ export function PublicProfile({
                         </span>
                       ) : null}
                     </div>
-                    {p.role ? <p className="text-sm text-indigo-600">{p.role}</p> : null}
+                    {p.role ? <p className="text-sm text-emerald-600">{p.role}</p> : null}
                     {p.description ? <p className="mt-1.5 text-sm text-slate-600">{p.description}</p> : null}
                     {p.techStack ? (
                       <p className="mt-2 text-xs font-medium text-slate-400">{p.techStack}</p>
@@ -178,7 +178,7 @@ export function PublicProfile({
                         href={p.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-emerald-600 hover:text-emerald-700"
                       >
                         Ver proyecto
                         <ExternalLink className="h-3.5 w-3.5" />
@@ -214,7 +214,7 @@ export function PublicProfile({
                 {profile.skills.map((s, i) => (
                   <span
                     key={i}
-                    className="rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-700"
+                    className="rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1.5 text-sm font-medium text-emerald-700"
                   >
                     {s.name}
                   </span>
@@ -230,7 +230,7 @@ export function PublicProfile({
                 {profile.contactEmail ? (
                   <a
                     href={`mailto:${profile.contactEmail}`}
-                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-indigo-200 hover:text-indigo-700"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-emerald-200 hover:text-emerald-700"
                   >
                     <Mail className="h-4 w-4" />
                     {profile.contactEmail}
@@ -248,7 +248,7 @@ export function PublicProfile({
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-indigo-200 hover:text-indigo-700"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-emerald-200 hover:text-emerald-700"
                   >
                     <l.icon className="h-4 w-4" />
                     {l.label}

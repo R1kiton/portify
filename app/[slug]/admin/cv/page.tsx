@@ -26,7 +26,7 @@ function CardHeading({
 }) {
   return (
     <div className="mb-6 flex items-center gap-2">
-      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
         <Icon className="h-4.5 w-4.5" />
       </div>
       <div>

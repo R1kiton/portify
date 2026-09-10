@@ -42,7 +42,7 @@ export default async function CardPage({
         </div>
         <div>
           <p className="text-xl font-bold text-slate-900">{profile.fullName}</p>
-          <p className="text-sm font-medium text-indigo-600">{profile.career}</p>
+          <p className="text-sm font-medium text-emerald-600">{profile.career}</p>
         </div>
         <p className="break-all rounded-lg bg-slate-50 px-3 py-2 text-sm font-medium text-slate-600">{url}</p>
       </div>
